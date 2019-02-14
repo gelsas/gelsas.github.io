@@ -1,0 +1,175 @@
+<html>
+	<style>
+		.custom-range::-webkit-slider-thumb {
+			background-color: #EB5B9F !important;
+		}
+
+		.custom-range:focus::-webkit-slider-thumb{box-shadow:none !important}
+		.custom-range:focus::-moz-range-thumb{box-shadow:none !important}
+		.custom-range:focus::-ms-thumb{box-shadow:none !important}
+    </style>
+	
+    <head>
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    
+    <body>
+<div class="measure-content" style="text-align: left;width: 270px;margin: 0 auto;margin-top: 1%;">
+                    <div class="text-left">
+                       <h5 class="ml-1"> <label  for="height">Größe: <span id="heightInfo"></span></label></b>
+                    <input type="range"  id="height"  class="custom-range" value="150" min="150" max="200" step="2.5" oninput="ChangeHeight(this.value)" style="margin: 10px 0 10px 0;"> 
+                    </div>
+                    <div class="text-left">
+                        <h5 class="ml-1"> <label for="weight">Gewicht: <span id="weightInfo"></span></label></b>
+                    <input type="range"  id="weight"   class="custom-range" value="40" min="40" max="100" step="2.5" oninput="ChangeWeight(this.value)" style="margin: 10px 0 10px 0;">
+                    </div>
+                    <div class="mt-2 text-center">
+                            <h5>Deine Größe:</h5> 
+<center style="margin-top: 10px;"><div id="container" style="/* margin-top: 12px; */width: 120px;height: 100px;border: 1px solid;font-size: 50px;text-align: center;vertical-align: middle;line-height: 100px;margin: 0 auto;" id="size">XL</div></center>
+                       
+                      
+                              
+                      
+                    </div>
+</div>
+    <script>
+        var weight = 40, height = 150;
+        window.onload = () => {
+            document.getElementById("heightInfo").innerText = 150 + " cm";
+            document.getElementById("weightInfo").innerText = 40 + " kg";
+        }
+        function ChangeHeight(data) {
+            height = data;
+            document.getElementById("heightInfo").innerText = data + " cm";
+            UpdateSize();
+        }
+        function ChangeWeight(data) {  
+            weight = data;
+            document.getElementById("weightInfo").innerText = data + " kg";
+            UpdateSize();
+        }
+        function UpdateSize() {
+            if(height > 172.5 || weight > 72.5){
+                document.getElementById("size").innerText = "N/A";
+            }
+            else if(weight == 40){
+                if(height >= 157.5 && height <= 160){
+                    document.getElementById("size").innerText = "M";
+                }
+                else{
+                    document.getElementById("size").innerText = "N/A";
+                }
+            }
+            else if(weight >= 42.5 && weight <= 45){
+                if(height >= 157.5 && height <= 162.5){
+                    document.getElementById("size").innerText = "M";
+                }
+                else{
+                    document.getElementById("size").innerText = "N/A";
+                }
+            }  
+            else if(weight == 47.5){
+                if(height < 162.5){
+                    document.getElementById("size").innerText = "M";
+                }
+                else if(height >= 162.5 && height <= 167.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "N/A";
+                }
+            }
+            else if(weight >= 50 && weight <= 52.5){
+                if(height < 162.5){
+                    document.getElementById("size").innerText = "M";
+                }
+                else if(height >= 162.5 && height <= 167.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else if(height == 170){
+                    document.getElementById("size").innerText = "XL";
+                }
+                else{
+                    document.getElementById("size").innerText = "N/A";
+                }
+            }
+            else if(weight == 55){
+                if(height < 160){
+                    document.getElementById("size").innerText = "M";
+                }
+                else if(height >= 160 && height <= 167.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else if(height == 170){
+                    document.getElementById("size").innerText = "XL";
+                }
+                else{
+                    document.getElementById("size").innerText = "N/A";
+                }
+            }
+            else if(weight == 57.5){
+                if(height < 167.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            else if(weight >= 60 && weight <= 62.5){
+                if(height < 165){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            else if(weight == 65){
+                if(height < 152.5){
+                    document.getElementById("size").innerText = "N/A";
+                }
+                else if(height >= 152.5 && height <= 165){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            else if(weight == 67.5){
+                if(height < 152.5){
+                    document.getElementById("size").innerText = "N/A";
+                }
+                else if(height >= 152.5 && height <= 162.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            else if(weight == 70){
+                if(height < 152.5){
+                    document.getElementById("size").innerText = "N/A";
+                }
+                else if(height >= 152.5 && height <= 160){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            else if(weight == 72.5){
+                if(height < 152.5){
+                    document.getElementById("size").innerText = "N/A";
+                }
+                else if(height >= 152.5 && height <= 157.5){
+                    document.getElementById("size").innerText = "L";
+                }
+                else{
+                    document.getElementById("size").innerText = "XL";
+                }
+            }
+            
+        }
+
+    </script>
+	    </body>
+</html>
