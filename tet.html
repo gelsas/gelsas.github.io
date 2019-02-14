@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+		.slider {
+		  width: 230px;
+		  margin: 10px 0 30px 0;
+		}
+
+		.slider-handle {
+			background-color: #dc5351 !important;
+			background-image: linear-gradient(to bottom, #dc5351 0%, #d94442 100%) !important;
+		}
+
+		.measure-content {
+			text-align: left;
+			width: 270px;
+			margin: 0 auto;
+		}
+
+		.desc {
+			color: #a3a3a3;
+			font-size: 14px;
+			font-weight: normal;
+			-webkit-font-smoothing: antialiased;
+			margin-top: 4px;
+		}
+
+		.nav-link.active {
+			background-color: #dc5351 !important;
+		}
+
+		.nav-link.active {
+			color: white !important;
+			background-color: #dc5351 !important;
+		}
+
+		.nav-item a {
+			color: #dc5351 !important;
+		}
+
+	  h3 {
+	    font-size: 1.2em !important;
+	    margin-bottom: -2px !important;
+	  }
+
+	  #container {
+	    width: 120px;
+	    height: 100px;
+	    border: 1px solid;
+	    font-size: 50px;
+	    text-align: center;
+	    vertical-align: middle;
+	    line-height: 100px;
+	    margin: 0 auto;
+	  }
+	  #container2 {
+	    width: 120px;
+	    height: 100px;
+	    border: 1px solid;
+	    font-size: 50px;
+	    text-align: center;
+	    vertical-align: middle;
+	    line-height: 100px;
+	    margin: 0 auto;
+	  }
+	  .container {
+	    width: 100%;
+	    padding: 0 15px;
+	    text-align: left;
+	  }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"> </script>
+
+  <script>
+  _u = _.noConflict();
+  </script>
+</head>
+<body>
+<script>
+function calculate(metrics)
+{
+    if (metrics) {
+      var height =  $( "#heightm" )[0].value;
+      var waist = $( "#waistm" )[0].value;
+      var hips = $( "#hipsm" )[0].value;
+      $('#heightvm').text(height);
+      $('#waistvm').text(waist);
+      $('#hipsvm').text(hips);
+    } else {
+      var height =  $( "#height" )[0].value;
+      var waist = $( "#waist" )[0].value;
+      var hips = $( "#hips" )[0].value;
+      $('#heightv').text(height);
+      $('#waistv').text(waist);
+      $('#hipsv').text(hips);
+    }
+
+var sizes_short = {
+    24: [{s: 'S', h1: 33, h2: 39}],
+    25: [{s: 'S', h1: 33, h2: 40}],
+    26: [{s: 'S', h1: 33, h2: 40}, {s: 'M', h1: 41, h2: 41}],
+    27: [{s: 'S', h1: 33, h2: 38}, {s: 'M', h1: 39, h2: 42}],
+    28: [{s: 'S', h1: 33, h2: 36}, {s: 'M', h1: 37, h2: 43}],
+    29: [{s: 'M', h1: 33, h2: 44}],
+    30: [{s: 'M', h1: 33, h2: 43}, {s: 'L', h1: 44, h2: 45}],
+    31: [{s: 'M', h1: 33, h2: 41}, {s: 'L', h1: 42, h2: 46}],
+    32: [{s: 'M', h1: 33, h2: 39}, {s: 'L', h1: 40, h2: 46}, {s: 'XL', h1: 47, h2: 47}],
+    33: [{s: 'M', h1: 33, h2: 33}, {s: 'L', h1: 34, h2: 44}, {s: 'XL', h1: 45, h2: 48}],
+    34: [{s: 'L', h1: 33, h2: 42}, {s: 'XL', h1: 43, h2: 49}],
+    35: [{s: 'L', h1: 34, h2: 39}, {s: 'XL', h1: 40, h2: 50}],
+    36: [{s: 'L', h1: 35, h2: 36}, {s: 'XL', h1: 37, h2: 51}],
+    37: [{s: 'XL', h1: 36, h2: 49}, {s: '2XL', h1: 50, h2: 52}],
+    38: [{s: 'XL', h1: 37, h2: 47}, {s: '2XL', h1: 48, h2: 53}],
+    39: [{s: 'XL', h1: 38, h2: 45}, {s: '2XL', h1: 46, h2: 54}],
+    40: [{s: 'XL', h1: 39, h2: 41}, {s: '2XL', h1: 42, h2: 55}],
+    41: [{s: '2XL', h1: 40, h2: 56}],
+    42: [{s: '2XL', h1: 41, h2: 57}],
+    43: [{s: '2XL', h1: 42, h2: 58}],
+    44: [{s: '2XL', h1: 43, h2: 59}],
+    45: [{s: '2XL', h1: 44, h2: 56}, {s: '3XL', h1: 57, h2: 60}],
+    46: [{s: '2XL', h1: 45, h2: 54}, {s: '3XL', h1: 55, h2: 60}],
+    47: [{s: '2XL', h1: 46, h2: 53}, {s: '3XL', h1: 54, h2: 60}],
+    48: [{s: '2XL', h1: 47, h2: 50}, {s: '3XL', h1: 51, h2: 60}],
+    49: [{s: '3XL', h1: 48, h2: 60}],
+    50: [{s: '3XL', h1: 49, h2: 60}]};
+
+var sizes_tall = {
+    24: [{s: 'S', h1: 33, h2: 39}],
+    25: [{s: 'S', h1: 33, h2: 40}],
+    26: [{s: 'S', h1: 33, h2: 40}, {s: 'M', h1: 41, h2: 41}],
+    27: [{s: 'S', h1: 33, h2: 38}, {s: 'M', h1: 39, h2: 42}],
+    28: [{s: 'S', h1: 33, h2: 36}, {s: 'M', h1: 37, h2: 43}],
+    29: [{s: 'M', h1: 33, h2: 44}],
+    30: [{s: 'M', h1: 33, h2: 43}, {s: 'L', h1: 44, h2: 45}],
+    31: [{s: 'M', h1: 33, h2: 41}, {s: 'L', h1: 42, h2: 46}],
+    32: [{s: 'M', h1: 33, h2: 39}, {s: 'L', h1: 40, h2: 46}, {s: 'XL', h1: 47, h2: 47}],
+    33: [{s: 'M', h1: 33, h2: 33}, {s: 'L', h1: 34, h2: 44}, {s: 'XL', h1: 45, h2: 48}],
+    34: [{s: 'L', h1: 33, h2: 42}, {s: 'XL', h1: 43, h2: 49}],
+    35: [{s: 'L', h1: 34, h2: 39}, {s: 'XL', h1: 40, h2: 50}],
+    36: [{s: 'L', h1: 35, h2: 36}, {s: 'XL', h1: 37, h2: 51}],
+    37: [{s: 'XL', h1: 36, h2: 49}, {s: '2XL', h1: 50, h2: 52}],
+    38: [{s: 'XL', h1: 37, h2: 47}, {s: '2XL', h1: 48, h2: 53}],
+    39: [{s: 'XL', h1: 38, h2: 45}, {s: '2XL', h1: 46, h2: 54}],
+    40: [{s: 'XL', h1: 39, h2: 41}, {s: '2XL', h1: 42, h2: 55}],
+    41: [{s: '2XL', h1: 40, h2: 56}],
+    42: [{s: '2XL', h1: 41, h2: 57}],
+    43: [{s: '2XL', h1: 42, h2: 58}],
+    44: [{s: '2XL', h1: 43, h2: 59}],
+    45: [{s: '2XL', h1: 44, h2: 56}, {s: '3XL', h1: 57, h2: 60}],
+    46: [{s: '2XL', h1: 45, h2: 54}, {s: '3XL', h1: 55, h2: 60}],
+    47: [{s: '2XL', h1: 46, h2: 53}, {s: '3XL', h1: 54, h2: 60}],
+    48: [{s: '2XL', h1: 47, h2: 50}, {s: '3XL', h1: 51, h2: 60}],
+    49: [{s: '3XL', h1: 48, h2: 60}],
+    50: [{s: '3XL', h1: 49, h2: 60}]};
+
+if (!metrics) {
+  var obj = (height < 64 ? _u.find(sizes_short[waist], function(o) { return (o.h1 <= hips && o.h2 >= hips);} ) : _u.find(sizes_tall[waist], function(o) { return (o.h1 <= hips && o.h2 >= hips);} ) );
+} else {
+  var nums = [ 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
+  var sizes_short_m = {};
+  var sizes_tall_m = {};
+  var prev = false;
+  nums.forEach(value => {
+    sizes_short_m[Math.floor(value * 2.54)] = [];
+    sizes_tall_m[Math.floor(value * 2.54)] = [];
+    sizes_short[value].forEach(size => {
+      sizes_short_m[Math.floor(value * 2.54)].push({s: size.s, h1: Math.ceil(size.h1 * 2.54), h2: Math.ceil(size.h2 * 2.54)});
+    });
+    sizes_tall[value].forEach(size => {
+      sizes_tall_m[Math.floor(value * 2.54)].push({s: size.s, h1: Math.ceil(size.h1 * 2.54), h2: Math.ceil(size.h2 * 2.54)});
+    });
+  });
+
+  var prev_short_m = [];
+  var prev_tall_m = [];
+  for (let index = 60; index < 128; index++) {
+    if (sizes_short_m[index]) {
+      prev_short_m = sizes_short_m[index];
+    } else {
+      sizes_short_m[index] = prev_short_m;
+    }
+
+    if (sizes_tall_m[index]) {
+      prev_tall_m = sizes_tall_m[index];
+    } else {
+      sizes_tall_m[index] = prev_tall_m;
+    }
+  }
+
+  var obj = (height < 163  ? _u.find(sizes_short_m[waist], function(o) { return (o.h1 <= hips && o.h2 >= hips);} ) : _u.find(sizes_tall_m[waist], function(o) { return (o.h1 <= hips-1 && o.h2 >= hips-1);} ) );
+}
+
+if (typeof obj != "undefined") {
+  metrics ? document.getElementById('container2').innerHTML = obj.s : document.getElementById('container').innerHTML = obj.s;
+} else {
+  metrics ? document.getElementById('container2').innerHTML = "N/A" : document.getElementById('container').innerHTML = "N/A";
+}
+}
+</script>
+<div class="container">
+<ul class="nav nav-pills mb-3 mt-3 nav-justified" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Imperial</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Metric</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+		<div class="measure-content">
+	    <h3>Height: <span id="heightv">56</span> inches</h3>
+	    <input id="height" data-slider-id='ex1Slider' type="text" data-slider-min="56" data-slider-max="77" data-slider-step="1" data-slider-value="56" />
+	    <h3>Waist: <span id="waistv">24</span> inches</h3>
+	    <div class="desc">
+	    (two inches above your belly button)
+	    </div>
+	    <input id="waist" data-slider-id='ex2Slider' type="text" data-slider-min="24" data-slider-max="50" data-slider-step="1" data-slider-value="24" />
+	    <h3>Hips: <span id="hipsv">33</span> inches</h3>
+	    <div class="desc">
+	    (around the fullest part of your hips)
+	    </div>
+	    <input id="hips" data-slider-id='ex3Slider' type="text" data-slider-min="33" data-slider-max="60" data-slider-step="1" data-slider-value="33" />
+	    <h3 style="text-align:center;">Your size:</h3>
+		</div>
+    <div id="container" style="margin-top: 12px;"></div>
+  </div>
+
+	  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	  	<div class="measure-content">
+		    <h3>Height: <span id="heightvm">142</span> cm</h3>
+		    <input id="heightm" data-slider-id='ex4Slider' type="text" data-slider-min="142" data-slider-max="195" data-slider-step="1" data-slider-value="142" />
+		    <h3>Waist: <span id="waistvm">60</span> cm</h3>
+		    <div class="desc">
+		    (5 cm above your belly button)
+		    </div>
+		    <input id="waistm" data-slider-id='ex5Slider' type="text" data-slider-min="60" data-slider-max="127" data-slider-step="1" data-slider-value="60" />
+		    <h3>Hips: <span id="hipsvm">83</span> cm</h3>
+		    <div class="desc">
+		    (around the fullest part of your hips)
+		    </div>
+		    <input id="hipsm" data-slider-id='ex6Slider' type="text" data-slider-min="83" data-slider-max="152" data-slider-step="1" data-slider-value="83" />
+		    <h3 style="text-align:center;margin-bottom:30px;">Your size:</h3>
+		</div>
+	    <div id="container2" style="margin-top: 12px;"></div>
+  	</div>
+  </div>
+
+
+<script type="text/javascript">
+    $('#height').slider({
+        tooltip: 'always',
+    }).on('change', () => calculate(false));
+    $('#waist').slider({
+        tooltip: 'always'
+    }).on('change', () => calculate(false));
+    $('#hips').slider({
+        tooltip: 'always'
+    }).on('change', () => calculate(false));
+
+    $('#heightm').slider({
+        tooltip: 'always',
+    }).on('change',() => calculate(true));
+    $('#waistm').slider({
+        tooltip: 'always'
+    }).on('change', () => calculate(true));
+    $('#hipsm').slider({
+        tooltip: 'always'
+    }).on('change', () => calculate(true));
+</script>
+
+</body>
+</html>
